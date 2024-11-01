@@ -1,6 +1,6 @@
 import arcade
 
-# Constants for the game
+# Constants
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Space Invaders"
@@ -23,15 +23,15 @@ class SpaceInvadersGame(arcade.Window):
         self.hit_sound = arcade.load_sound("hit.wav")
 
         self.player_sprite = None
-        self.enemy_speed = ENEMY_SPEED  # Set the initial enemy speed
-        self.score = 0  # Track the player's score
-        self.game_over = False  # Track if the game is over
+        self.enemy_speed = ENEMY_SPEED  
+        self.score = 0  
+        self.game_over = False  
 
         # Set up the game
         self.setup()
 
     def setup(self):
-        """Set up the game variables and initialize the sprites."""
+        # Set up the game variables and initialize the sprites.
         # Sprite lists
         self.player_list = arcade.SpriteList()
         self.bullet_list = arcade.SpriteList()
@@ -71,7 +71,7 @@ class SpaceInvadersGame(arcade.Window):
             arcade.draw_text("Press R to Restart", SCREEN_WIDTH / 2 - 120, SCREEN_HEIGHT / 2 - 50, arcade.color.WHITE, 24)
 
     def on_update(self, delta_time):
-        """Movement and game logic."""
+        # Movement and game logic.
         if not self.game_over:
             self.bullet_list.update()
 
@@ -82,11 +82,12 @@ class SpaceInvadersGame(arcade.Window):
                 if enemy.right > SCREEN_WIDTH or enemy.left < 0:
                     hit_edge = True
 
-            # If any enemy hit the edge, reverse direction and move all enemies down
+            # Move enemies down if one touches the edge and change direciton
             if hit_edge:
                 self.enemy_speed *= -1
                 for enemy in self.enemy_list:
-                    enemy.center_y -= 10  # Move all enemies down uniformly
+                    # Move all enemies down together
+                    enemy.center_y -= 10  
 
             # Check for collisions between bullets and enemies
             for bullet in self.bullet_list:
@@ -95,7 +96,8 @@ class SpaceInvadersGame(arcade.Window):
                     bullet.remove_from_sprite_lists()
                     for enemy in hit_list:
                         enemy.remove_from_sprite_lists()
-                        self.score += 1  # Increase score for each enemy hit
+                        self.score += 1 
+
                          # Play the hit sound
                         arcade.play_sound(self.hit_sound)
             # Check if any enemy has reached the player's y position
@@ -147,7 +149,7 @@ class SpaceInvadersGame(arcade.Window):
         if key in (arcade.key.LEFT, arcade.key.RIGHT):
             self.player_sprite.change_x = 0
 
-# Main code entry point
+# Main 
 def main():
     window = SpaceInvadersGame()
     arcade.run()

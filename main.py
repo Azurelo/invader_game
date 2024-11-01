@@ -126,9 +126,9 @@ class SpaceInvadersGame(arcade.Window):
 
     def on_key_press(self, key, modifiers):
         """Handle key press events."""
-        if key == arcade.key.LEFT:
+        if key == arcade.key.LEFT and not self.game_over:
             self.player_sprite.change_x = -PLAYER_SPEED
-        elif key == arcade.key.RIGHT:
+        elif key == arcade.key.RIGHT and not self.game_over:
             self.player_sprite.change_x = PLAYER_SPEED
         elif key == arcade.key.SPACE and not self.game_over:
             # Fire a bullet

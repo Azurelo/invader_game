@@ -6,7 +6,7 @@ The game I created is a classic Space Invaders-style shooter. Players control a 
 
 My purpose for writing this software was to improve my coding skills and learn how to create a fully functional game from scratch.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/k5fPIzXnRH4)
 
 # Development Environment
 
